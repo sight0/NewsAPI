@@ -5,19 +5,21 @@ import time
 import bcolors
 
 newsapi = "https://newsapi.org/v2/"
-APIKey = "{GET API FROM https://newsapi.org/register}"
+APIKey = "41e812f6628b4f9cbee0883f08f53d82"
 
 os.system('clear')
 def updateAPI():
     global x
-    news_us = requests.get(newsapi + "top-headlines?sources=google-news&apiKey=" + APIKey)
-    x = news_us.json()['articles']
+    news = requests.get(newsapi + "top-headlines?category=health&apiKey=" + APIKey)
+    x = news.json()['articles']
 updateAPI()
 
 while True:
     for p in x:
         updateAPI()
         print(bcolors.HEADER + p['title'] + bcolors.ENDC)
-        print(p['description'])
+        if(p['description'] != None):
+            print(bcolors.WARN + p['description'] + bcolors.ENDC)
+        print(bcolors.UNDERLINE + p['url'] + bcolors.ENDC)
         print("\n")
-        time.sleep(5)
+        time.sleep(3)
