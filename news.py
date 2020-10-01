@@ -5,7 +5,7 @@ import time
 import bcolors
 
 newsapi = "https://newsapi.org/v2/"
-APIKey = "41e812f6628b4f9cbee0883f08f53d82"
+APIKey = "[KEY HERE]"
 
 os.system('clear')
 def updateAPI():
